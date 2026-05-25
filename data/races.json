@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "24h-nuerburgring-2026",
+    "name": "ADAC RAVENOL 24h Nürburgring",
+    "season": 2026,
+    "seriesSlug": "24h-nuerburgring",
+    "trackSlug": "nuerburgring-nordschleife",
+    "startUtc": "2026-05-16T13:00:00Z",
+    "endUtc": "2026-05-17T13:00:00Z",
+    "complete": true
+  },
+  {
+    "slug": "le-mans-2026",
+    "name": "24 Heures du Mans",
+    "season": 2026,
+    "seriesSlug": "wec",
+    "trackSlug": "circuit-de-la-sarthe",
+    "startUtc": "2026-06-13T14:00:00Z",
+    "endUtc": "2026-06-14T14:00:00Z",
+    "complete": true
+  },
+  {
+    "slug": "24h-daytona-2026",
+    "name": "Rolex 24 At Daytona",
+    "season": 2026,
+    "seriesSlug": "imsa",
+    "trackSlug": "daytona",
+    "startUtc": "2026-01-24T18:40:00Z",
+    "endUtc": "2026-01-25T18:40:00Z",
+    "complete": false
+  },
+  {
+    "slug": "12h-sebring-2026",
+    "name": "Mobil 1 Twelve Hours of Sebring",
+    "season": 2026,
+    "seriesSlug": "imsa",
+    "trackSlug": "sebring",
+    "startUtc": "2026-03-21T14:40:00Z",
+    "endUtc": "2026-03-22T02:40:00Z",
+    "complete": false
+  },
+  {
+    "slug": "6h-imola-2026",
+    "name": "6 Hours of Imola",
+    "season": 2026,
+    "seriesSlug": "wec",
+    "trackSlug": "imola",
+    "startUtc": "2026-04-19T11:00:00Z",
+    "endUtc": "2026-04-19T17:00:00Z",
+    "complete": false
+  },
+  {
+    "slug": "24h-spa-2026",
+    "name": "CrowdStrike 24 Hours of Spa",
+    "season": 2026,
+    "seriesSlug": "gtwc-europe",
+    "trackSlug": "spa-francorchamps",
+    "startUtc": "2026-06-27T14:30:00Z",
+    "endUtc": "2026-06-28T14:30:00Z",
+    "complete": false
+  },
+  {
+    "slug": "wec-monza-2026",
+    "name": "6 Hours of Monza",
+    "season": 2026,
+    "seriesSlug": "wec",
+    "trackSlug": "monza",
+    "startUtc": "2026-07-12T11:00:00Z",
+    "endUtc": "2026-07-12T17:00:00Z",
+    "complete": false
+  },
+  {
+    "slug": "dtm-norisring-2026",
+    "name": "DTM Norisring",
+    "season": 2026,
+    "seriesSlug": "dtm",
+    "trackSlug": "norisring",
+    "startUtc": "2026-07-04T11:30:00Z",
+    "endUtc": "2026-07-05T14:30:00Z",
+    "complete": false
+  }
+]

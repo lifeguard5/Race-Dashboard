@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0c0a">
+  <title>Race · RACE PIT WALL</title>
+  <meta name="description" content="Race-Detail mit Countdown, Live-Timing, Wetter, Stream und Zeitplan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <div class="logo-mark"><span>RPW</span></div>
+    <div class="brand-text">
+      <h1>RACE PIT WALL</h1>
+      <div class="sub">ENDURANCE &amp; GT DASHBOARD</div>
+    </div>
+  </a>
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="index.html">Hub</a>
+    <a href="rennen.html">Rennen</a>
+    <a href="serien.html">Serien</a>
+    <a href="kalender.html">Kalender</a>
+    <a href="watchlist.html">Watchlist</a>
+    <a href="about.html">Info</a>
+  </nav>
+  <div class="header-strip">
+    <div class="strip-item"><span class="strip-label">UHR</span><span class="strip-value tabular" id="hdr-clock">—</span></div>
+  </div>
+</header>
+
+<main id="race-main" class="grid-race">
+  <div class="loading" id="boot-msg">RENNEN LADEN …</div>
+</main>
+
+<script>
+  (function () {
+    var isFile = location.protocol === 'file:';
+    function showWarn(html) {
+      var m = document.getElementById('boot-msg');
+      if (!m) return;
+      m.className = '';
+      m.style.cssText = 'max-width:720px;margin:60px auto;padding:24px;border:1px dashed #ff2a2a;background:rgba(255,42,42,0.05);color:#e8efe5;font-family:JetBrains Mono,monospace;line-height:1.6;font-size:13px;grid-column:1/-1;';
+      m.innerHTML = html;
+    }
+    if (isFile) {
+      showWarn(
+        '<strong style="font-family:Bebas Neue;font-size:20px;letter-spacing:0.2em;color:#ff2a2a;display:block;margin-bottom:14px;">⚠ FILE:// ERKANNT</strong>' +
+        'Doppelklick funktioniert nicht — Chrome blockt unter <code style="color:#ffd60a">file://</code> ES6-Module und <code style="color:#ffd60a">fetch()</code>.<br><br>' +
+        '<b style="color:#84ff00">Lokal starten:</b><br>' +
+        '<code style="display:block;margin:10px 0;padding:10px;background:#0a0c0a;color:#84ff00;border-left:2px solid #84ff00;">cd "/Users/hesse/Developer/Race Dashboard"<br>python3 -m http.server 8765</code>' +
+        '<a href="http://localhost:8765" style="color:#84ff00">http://localhost:8765</a>'
+      );
+      return;
+    }
+    setTimeout(function () {
+      var m = document.getElementById('boot-msg');
+      if (m && m.textContent.trim().indexOf('RENNEN LADEN') === 0) {
+        showWarn(
+          '<strong style="font-family:Bebas Neue;font-size:20px;letter-spacing:0.2em;color:#ff2a2a;display:block;margin-bottom:14px;">⚠ MODULE NICHT GELADEN</strong>' +
+          'Öffne DevTools (<code>Cmd+Opt+I</code>) → Console und schick mir die rote Fehlermeldung.<br><br>' +
+          'Protokoll: <code style="color:#ffd60a">' + location.protocol + '</code>'
+        );
+      }
+    }, 6000);
+  })();
+</script>
+
+<footer class="site-footer">
+  <div><span class="green">●</span> RACE PIT WALL · Inoffizielles Fan-Dashboard</div>
+  <div class="disclaimer">
+    Keine Verbindung zu ACO, FIA, ADAC, SRO, Nürburgring oder anderen Veranstaltern.
+    Live-Timing-Daten werden über offizielle Embeds eingebunden, sofern erlaubt. Markenrechte gehören den jeweiligen Inhabern.
+  </div>
+</footer>
+
+<script type="module" src="assets/js/app.js"></script>
+<script type="module" src="assets/js/render-race.js"></script>
+
+</body>
+</html>

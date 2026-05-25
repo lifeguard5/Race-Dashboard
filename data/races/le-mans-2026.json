@@ -1,0 +1,34 @@
+{
+  "slug": "le-mans-2026",
+  "name": "24 Heures du Mans",
+  "edition": 94,
+  "season": 2026,
+  "seriesSlug": "wec",
+  "trackSlug": "circuit-de-la-sarthe",
+  "startUtc": "2026-06-13T14:00:00Z",
+  "endUtc": "2026-06-14T14:00:00Z",
+  "timezone": "Europe/Paris",
+  "schedule": [
+    { "date": "2026-06-07", "time": "18:00", "event": "Scrutineering Place de la République", "type": "scrutineering" },
+    { "date": "2026-06-10", "time": "14:00", "event": "Freies Training 1", "type": "practice" },
+    { "date": "2026-06-10", "time": "19:00", "event": "Qualifying", "type": "quali" },
+    { "date": "2026-06-10", "time": "22:00", "event": "Freies Training 2 · Nacht", "type": "practice" },
+    { "date": "2026-06-11", "time": "21:00", "event": "Hyperpole · Top 8", "type": "quali" },
+    { "date": "2026-06-12", "time": "11:30", "event": "Warm-up", "type": "warmup" },
+    { "date": "2026-06-13", "time": "16:00", "event": "Rennstart · 24 Stunden", "type": "race-start" },
+    { "date": "2026-06-14", "time": "16:00", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.fiawec.com/en/live/77",
+  "newsFeeds": [
+    { "label": "FIA WEC News", "url": "https://www.fiawec.com/en/rss" }
+  ],
+  "quicklinks": [
+    { "label": "FIA WEC Live", "sub": "Offizielles Live Timing", "url": "https://www.fiawec.com/en/live/77" },
+    { "label": "lemans.org", "sub": "ACO · Veranstalter", "url": "https://www.lemans.org/en/24-hours-of-le-mans" },
+    { "label": "FIA WEC", "sub": "Meisterschaft", "url": "https://www.fiawec.com" },
+    { "label": "Motorsport-Total", "sub": "News (DE)", "url": "https://www.motorsport-total.com/le-mans/24h-le-mans" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "12h-sebring-2026",
+  "name": "Mobil 1 Twelve Hours of Sebring",
+  "edition": 74,
+  "season": 2026,
+  "seriesSlug": "imsa",
+  "trackSlug": "sebring",
+  "startUtc": "2026-03-21T14:40:00Z",
+  "endUtc": "2026-03-22T02:40:00Z",
+  "timezone": "America/New_York",
+  "schedule": [
+    { "date": "2026-03-21", "time": "10:40", "event": "Rennstart · 12 Stunden", "type": "race-start" },
+    { "date": "2026-03-21", "time": "22:40", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.imsa.com/tvlive/",
+  "newsFeeds": [],
+  "quicklinks": [
+    { "label": "IMSA Live", "sub": "Offizieller Stream", "url": "https://www.imsa.com/tvlive/" },
+    { "label": "Sebring 12h", "sub": "Event-Seite", "url": "https://www.imsa.com/events/sebring/" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

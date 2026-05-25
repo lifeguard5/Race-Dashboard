@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0c0a">
+  <title>Info · RACE PIT WALL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <div class="logo-mark"><span>RPW</span></div>
+    <div class="brand-text">
+      <h1>RACE PIT WALL</h1>
+      <div class="sub">ENDURANCE &amp; GT DASHBOARD</div>
+    </div>
+  </a>
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="index.html">Hub</a>
+    <a href="rennen.html">Rennen</a>
+    <a href="serien.html">Serien</a>
+    <a href="kalender.html">Kalender</a>
+    <a href="watchlist.html">Watchlist</a>
+    <a href="about.html">Info</a>
+  </nav>
+  <div class="header-strip">
+    <div class="strip-item"><span class="strip-label">UHR</span><span class="strip-value tabular" id="hdr-clock">—</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="card span-full" style="max-width: 860px; margin: 24px auto;">
+    <div class="card-corner"></div>
+    <div class="card-title">DISCLAIMER · DATENQUELLEN</div>
+
+    <h2 style="font-family: var(--font-hero); font-size: 28px; text-transform: uppercase; margin-bottom: 14px;">Inoffizielles Fan-Dashboard</h2>
+    <p style="color: var(--ink-dim); line-height: 1.7; margin-bottom: 18px;">
+      RACE PIT WALL ist ein inoffizielles Fan-Projekt. Keine Verbindung zu ACO, FIA, ADAC, SRO,
+      Nürburgring GmbH oder anderen Veranstaltern. Live-Timing-Daten werden ausschließlich über
+      offizielle Embeds eingebunden, sofern dies erlaubt ist. Markenrechte gehören den jeweiligen Inhabern.
+    </p>
+
+    <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.2em; color: var(--green); margin: 24px 0 10px;">EINGEBUNDENE DIENSTE</h3>
+    <ul style="color: var(--ink-dim); line-height: 1.8; font-size: 12px; padding-left: 20px;">
+      <li><strong style="color: var(--ink)">Open-Meteo</strong> — kostenlose Wetter-API ohne Schlüssel (Forecast pro Strecke)</li>
+      <li><strong style="color: var(--ink)">YouTube</strong> — Livestream-Embeds offizieller Veranstalter und befreundeter Channels</li>
+      <li><strong style="color: var(--ink)">rss2json.com</strong> — RSS-Bridge (geplant in Phase 2) für News-Feeds</li>
+      <li><strong style="color: var(--ink)">Google Fonts</strong> — Bebas Neue, JetBrains Mono, Archivo Black</li>
+    </ul>
+
+    <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.2em; color: var(--green); margin: 24px 0 10px;">KEIN TRACKING · KEIN AUTH</h3>
+    <p style="color: var(--ink-dim); line-height: 1.7; font-size: 12px;">
+      Keine Cookies, kein Analytics, keine Anmeldung, keine Werbung. Watchlist-Daten bleiben lokal im Browser.
+    </p>
+
+    <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.2em; color: var(--green); margin: 24px 0 10px;">CODE</h3>
+    <p style="color: var(--ink-dim); line-height: 1.7; font-size: 12px;">
+      Reines HTML/CSS/JS, kein Build-Step. Jedes Rennen liegt als JSON in <code style="color: var(--yellow)">data/races/</code>
+      und lässt sich direkt im GitHub-Web-Editor pflegen.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div><span class="green">●</span> RACE PIT WALL · Inoffizielles Fan-Dashboard</div>
+  <div class="disclaimer">
+    Keine Verbindung zu ACO, FIA, ADAC, SRO, Nürburgring oder anderen Veranstaltern.
+    Live-Timing-Daten werden über offizielle Embeds eingebunden, sofern erlaubt. Markenrechte gehören den jeweiligen Inhabern.
+  </div>
+</footer>
+
+<script type="module" src="assets/js/app.js"></script>
+
+</body>
+</html>

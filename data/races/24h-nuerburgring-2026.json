@@ -1,0 +1,36 @@
+{
+  "slug": "24h-nuerburgring-2026",
+  "name": "ADAC RAVENOL 24h Nürburgring",
+  "edition": 54,
+  "season": 2026,
+  "seriesSlug": "24h-nuerburgring",
+  "trackSlug": "nuerburgring-nordschleife",
+  "startUtc": "2026-05-16T13:00:00Z",
+  "endUtc": "2026-05-17T13:00:00Z",
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    { "date": "2026-05-14", "time": "13:15", "event": "Qualifying 1 · Nordschleife", "type": "quali" },
+    { "date": "2026-05-14", "time": "20:00", "event": "Qualifying 2 · Nacht-Quali", "type": "quali" },
+    { "date": "2026-05-15", "time": "10:15", "event": "Top Qualifying 1", "type": "quali" },
+    { "date": "2026-05-15", "time": "11:05", "event": "Top Qualifying 2", "type": "quali" },
+    { "date": "2026-05-15", "time": "13:35", "event": "Top Qualifying 3 (Nitro)", "type": "quali" },
+    { "date": "2026-05-16", "time": "10:00", "event": "Warm-up", "type": "warmup" },
+    { "date": "2026-05-16", "time": "15:00", "event": "Rennstart · 24 Stunden", "type": "race-start" },
+    { "date": "2026-05-17", "time": "15:00", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": "https://livetiming.azurewebsites.net/events/50/results",
+  "liveTimingUrl": "https://livetiming.azurewebsites.net/events/50/results",
+  "newsFeeds": [
+    { "label": "24h-Rennen.de News", "url": "https://www.24h-rennen.de/feed/" }
+  ],
+  "quicklinks": [
+    { "label": "Live Timing", "sub": "Offizielle Rundenzeiten", "url": "https://livetiming.azurewebsites.net/events/50/results" },
+    { "label": "24h-Rennen.de", "sub": "Veranstalter ADAC", "url": "https://www.24h-rennen.de/" },
+    { "label": "Nürburgring.de", "sub": "Streckenbetreiber", "url": "https://www.nuerburgring.de/events/categories/automotive/24h-race" },
+    { "label": "Motorsport-Magazin", "sub": "Live-Ticker", "url": "https://www.motorsport-magazin.com/24h-stunden-nuerburgring/" },
+    { "label": "Motorsport-Total", "sub": "News-Feed", "url": "https://www.motorsport-total.com/24-stunden-vom-nuerburgring" },
+    { "label": "RTL+ Stream", "sub": "Volle Übertragung", "url": "https://www.rtlplus.de/" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

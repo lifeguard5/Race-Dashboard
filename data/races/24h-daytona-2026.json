@@ -1,0 +1,24 @@
+{
+  "slug": "24h-daytona-2026",
+  "name": "Rolex 24 At Daytona",
+  "edition": 64,
+  "season": 2026,
+  "seriesSlug": "imsa",
+  "trackSlug": "daytona",
+  "startUtc": "2026-01-24T18:40:00Z",
+  "endUtc": "2026-01-25T18:40:00Z",
+  "timezone": "America/New_York",
+  "schedule": [
+    { "date": "2026-01-24", "time": "13:40", "event": "Rennstart · 24 Stunden", "type": "race-start" },
+    { "date": "2026-01-25", "time": "13:40", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.imsa.com/tvlive/",
+  "newsFeeds": [],
+  "quicklinks": [
+    { "label": "IMSA Live", "sub": "Offizieller Stream", "url": "https://www.imsa.com/tvlive/" },
+    { "label": "Rolex 24", "sub": "Event-Seite", "url": "https://www.imsa.com/events/rolex24/" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

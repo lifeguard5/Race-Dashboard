@@ -1,0 +1,10 @@
+{
+  "site": {
+    "title": "RACE PIT WALL",
+    "tagline": "Endurance & GT Dashboard",
+    "lang": "de"
+  },
+  "globalNewsFeeds": [
+    { "label": "Motorsport-Total · News", "url": "https://www.motorsport-total.com/rss/news.xml" }
+  ]
+}

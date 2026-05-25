@@ -1,0 +1,23 @@
+{
+  "slug": "6h-imola-2026",
+  "name": "6 Hours of Imola",
+  "edition": 3,
+  "season": 2026,
+  "seriesSlug": "wec",
+  "trackSlug": "imola",
+  "startUtc": "2026-04-19T11:00:00Z",
+  "endUtc": "2026-04-19T17:00:00Z",
+  "timezone": "Europe/Rome",
+  "schedule": [
+    { "date": "2026-04-19", "time": "13:00", "event": "Rennstart · 6 Stunden", "type": "race-start" },
+    { "date": "2026-04-19", "time": "19:00", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.fiawec.com",
+  "newsFeeds": [],
+  "quicklinks": [
+    { "label": "FIA WEC", "sub": "Offizielle Seite", "url": "https://www.fiawec.com" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

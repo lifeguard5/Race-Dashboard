@@ -1,0 +1,50 @@
+/* === RACE PIT WALL · Design Tokens ===
+   Aus Legacy extrahiert. Stil: Eifel-Grün, Asphalt-dunkel, Bebas/JetBrains/Archivo. */
+
+:root {
+  /* --- Hintergründe --- */
+  --bg:           #0a0c0a;
+  --bg-card:      #111511;
+  --bg-card-2:    #161a16;
+  --asphalt:      #1a1d1a;
+
+  /* --- Linien --- */
+  --line:         #1f241f;
+  --line-bright:  #2d342d;
+
+  /* --- Text --- */
+  --ink:          #e8efe5;
+  --ink-dim:      #8a9588;
+  --ink-faint:    #4a544a;
+
+  /* --- Akzente --- */
+  --green:        #84ff00;   /* Eifel green */
+  --green-dim:    #5cb300;
+  --yellow:       #ffd60a;   /* Caution / Start lights */
+  --red:          #ff2a2a;   /* Red flag / Live */
+  --blue:         #2196f3;
+  --orange:       #ff7a00;
+
+  /* --- Typo --- */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-hero:    'Archivo Black', sans-serif;
+
+  /* --- Spacing (8er-Raster) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  14px;   /* Standard-Card-Gap aus Legacy */
+  --space-5:  18px;   /* Card-Padding */
+  --space-6:  24px;
+  --space-7:  32px;
+
+  /* --- Layout --- */
+  --max-w:    1600px;
+  --bp-md:    768px;
+  --bp-lg:    1100px;
+  --bp-xl:    1200px;
+
+  /* --- Effekte --- */
+  --grain-svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "24h-spa-2026",
+  "name": "CrowdStrike 24 Hours of Spa",
+  "edition": 78,
+  "season": 2026,
+  "seriesSlug": "gtwc-europe",
+  "trackSlug": "spa-francorchamps",
+  "startUtc": "2026-06-27T14:30:00Z",
+  "endUtc": "2026-06-28T14:30:00Z",
+  "timezone": "Europe/Brussels",
+  "schedule": [
+    { "date": "2026-06-27", "time": "16:30", "event": "Rennstart · 24 Stunden", "type": "race-start" },
+    { "date": "2026-06-28", "time": "16:30", "event": "Zielflagge", "type": "race-end" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.gt-world-challenge-europe.com",
+  "newsFeeds": [],
+  "quicklinks": [
+    { "label": "GTWC Europe", "sub": "Offizielle Seite", "url": "https://www.gt-world-challenge-europe.com" },
+    { "label": "24h Spa", "sub": "Event-Seite", "url": "https://www.gt-world-challenge-europe.com/event/total-24-hours-of-spa" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}

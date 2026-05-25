@@ -1,0 +1,24 @@
+{
+  "slug": "dtm-norisring-2026",
+  "name": "DTM Norisring",
+  "edition": null,
+  "season": 2026,
+  "seriesSlug": "dtm",
+  "trackSlug": "norisring",
+  "startUtc": "2026-07-04T11:30:00Z",
+  "endUtc": "2026-07-05T14:30:00Z",
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    { "date": "2026-07-04", "time": "13:30", "event": "Rennen 1", "type": "race-start" },
+    { "date": "2026-07-05", "time": "13:30", "event": "Rennen 2", "type": "race-start" }
+  ],
+  "liveTimingEmbed": null,
+  "liveTimingUrl": "https://www.dtm.com",
+  "newsFeeds": [],
+  "quicklinks": [
+    { "label": "DTM", "sub": "Offizielle Seite", "url": "https://www.dtm.com" },
+    { "label": "Norisring", "sub": "Strecken-Info", "url": "https://www.norisring.de" }
+  ],
+  "result": null,
+  "discordChannelId": null
+}
