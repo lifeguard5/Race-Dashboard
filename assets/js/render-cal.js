@@ -5,6 +5,7 @@
 import { loadCore } from './data-loader.js';
 import { getRaceStatus, getStatusLabel } from './race-status.js';
 import { formatRelative, indexBy, el, pad } from './utils.js';
+import { icon } from './icons.js';
 import { showError } from './app.js';
 
 const main = document.getElementById('cal-main');
@@ -112,6 +113,7 @@ function renderCalRow(race, seriesMap, tracksMap, now) {
   return el('a', {
     class: 'cal-row ' + status,
     href: `race.html?id=${encodeURIComponent(race.slug)}`,
+    dataset: { series: race.seriesSlug || '' },
   },
     dayBox,
     el('div', { class: 'cal-info' },
@@ -124,8 +126,8 @@ function renderCalRow(race, seriesMap, tracksMap, now) {
       ),
       el('div', { class: 'cal-name' }, race.name),
       el('div', { class: 'cal-meta' },
-        el('span', {}, '📍 ', track ? track.name : race.trackSlug),
-        el('span', {}, '🏁 ', pad(start.getHours()) + ':' + pad(start.getMinutes()), ' lokal'),
+        el('span', {}, icon('pin'), ' ', track ? track.name : race.trackSlug),
+        el('span', {}, icon('flag'), ' ', pad(start.getHours()) + ':' + pad(start.getMinutes()), ' deine Zeit'),
         el('span', { class: 'cal-relative' }, formatRelative(start, now))
       )
     )

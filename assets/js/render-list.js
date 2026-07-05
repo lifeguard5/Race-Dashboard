@@ -124,7 +124,7 @@ function renderListCard(race, seriesMap, tracksMap, now) {
   const status = getRaceStatus(race, now);
   const start  = new Date(race.startUtc);
 
-  return el('a', { class: 'race-card list-card', href: `race.html?id=${encodeURIComponent(race.slug)}` },
+  return el('a', { class: 'race-card list-card', href: `race.html?id=${encodeURIComponent(race.slug)}`, dataset: { series: race.seriesSlug || '' } },
     el('div', { class: 'card-corner' }),
     el('div', { class: 'race-card-top' },
       el('span', { class: 'race-card-series' }, series ? series.shortName : race.seriesSlug),

@@ -68,7 +68,7 @@ function render({ series, ownRaces, tracksMap, seasons, activeSeason }) {
 }
 
 function renderHero(series, ownRaces, activeSeason, seasons) {
-  return el('section', { class: 'race-hero span-full' },
+  return el('section', { class: 'race-hero span-full', dataset: { series: series.slug || '' } },
     el('div', { class: 'card-corner' }),
     el('div', { class: 'meta-line' },
       el('span', { class: 'series-tag' }, series.shortName || series.slug.toUpperCase()),
@@ -103,7 +103,7 @@ function renderCard(race, series, tracksMap, now) {
   const status = getRaceStatus(race, now);
   const start  = new Date(race.startUtc);
 
-  return el('a', { class: 'race-card list-card', href: `race.html?id=${encodeURIComponent(race.slug)}` },
+  return el('a', { class: 'race-card list-card', href: `race.html?id=${encodeURIComponent(race.slug)}`, dataset: { series: race.seriesSlug || '' } },
     el('div', { class: 'card-corner' }),
     el('div', { class: 'race-card-top' },
       el('span', { class: 'race-card-series' }, series.shortName || race.seriesSlug),

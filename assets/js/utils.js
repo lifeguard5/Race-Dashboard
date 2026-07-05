@@ -10,13 +10,46 @@ export function pad(n, width = 2) {
   return String(n).padStart(width, '0');
 }
 
-/** Parse ISO-Date or "YYYY-MM-DD"+"HH:MM" combo into Date. */
-export function parseLocalDateTime(date, time, timezone) {
-  // timezone hint ist informativ — wir nutzen lokale Browser-Zeit für Display.
+/** Parse "YYYY-MM-DD"+"HH:MM" as wall-clock time in the BROWSER timezone. */
+export function parseLocalDateTime(date, time) {
   if (!date) return null;
   const [y, m, d] = date.split('-').map(Number);
   const [hh, mm] = (time || '00:00').split(':').map(Number);
   return new Date(y, (m || 1) - 1, d, hh || 0, mm || 0);
+}
+
+/**
+ * Parse "YYYY-MM-DD"+"HH:MM" as wall-clock time in a GIVEN IANA timezone
+ * (e.g. schedule times published in track-local time) and return the
+ * corresponding Date (absolute instant). Falls back to browser timezone
+ * if `timeZone` is missing or invalid.
+ */
+export function zonedTimeToDate(date, time, timeZone) {
+  if (!date) return null;
+  const [y, m, d] = date.split('-').map(Number);
+  const [hh, mm] = (time || '00:00').split(':').map(Number);
+  if (!timeZone) return new Date(y, (m || 1) - 1, d, hh || 0, mm || 0);
+  try {
+    // Guess the instant as if the wall-clock time were UTC, then measure
+    // the zone offset at that instant and correct the guess.
+    const utcGuess = Date.UTC(y, (m || 1) - 1, d, hh || 0, mm || 0);
+    const dtf = new Intl.DateTimeFormat('en-US', {
+      timeZone, hour12: false,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+    });
+    const parts = Object.fromEntries(
+      dtf.formatToParts(new Date(utcGuess)).map(p => [p.type, p.value])
+    );
+    const asUtc = Date.UTC(
+      Number(parts.year), Number(parts.month) - 1, Number(parts.day),
+      parts.hour === '24' ? 0 : Number(parts.hour), Number(parts.minute), Number(parts.second)
+    );
+    return new Date(utcGuess - (asUtc - utcGuess));
+  } catch (e) {
+    console.warn('[utils] invalid timezone, falling back to browser tz:', timeZone);
+    return new Date(y, (m || 1) - 1, d, hh || 0, mm || 0);
+  }
 }
 
 /** Format Date as "DO 14. MAI · 13:15" or "DO 14. MAI". */

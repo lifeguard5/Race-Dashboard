@@ -5,12 +5,13 @@
 import { loadConfig, loadSeries, loadTracks, loadRace } from './data-loader.js';
 import { getRaceStatus, getStatusLabel } from './race-status.js';
 import { renderCountdown } from './countdown.js';
+import { icon } from './icons.js';
 import { renderWeatherCard } from './weather.js';
 import { renderStreamCard } from './streams.js';
 import { renderNewsTicker } from './news.js';
 import {
   el, qs, indexBy, formatRaceDateTime, formatDayHeader,
-  parseLocalDateTime, setText,
+  zonedTimeToDate, formatTime, setText,
 } from './utils.js';
 import { showError } from './app.js';
 
@@ -49,7 +50,10 @@ function renderRace({ race, seriesMap, tracksMap, config }) {
   // 2. Countdown / Race-Clock (1 Spalte)
   const cdCard = card('COUNTDOWN', '');
   main.append(cdCard.wrap);
-  renderCountdown(cdCard.body, race);
+  // Keep the stop handle so intervals never stack if this page re-renders.
+  if (window.RPW && typeof window.RPW.stopCountdown === 'function') window.RPW.stopCountdown();
+  const stopCountdown = renderCountdown(cdCard.body, race);
+  window.RPW = Object.assign(window.RPW || {}, { stopCountdown });
 
   // 3. Wetter (1 Spalte)
   const wxCard = card('WETTER · ' + (track ? track.name.split('·')[0].trim().toUpperCase() : '—'), '', 'weather-card');
@@ -66,10 +70,16 @@ function renderRace({ race, seriesMap, tracksMap, config }) {
   main.append(stCard.wrap);
   renderStreamCard(stCard.body, series);
 
-  // 6. Zeitplan (1 Spalte)
-  const schCard = card('ZEITPLAN', null);
+  // 6. Zeitplan (1 Spalte) — Zeiten werden in die Browser-Zeitzone umgerechnet.
+  const schCard = card('ZEITPLAN', 'DEINE ZEITZONE');
   main.append(schCard.wrap);
   renderSchedule(schCard.body, race, now);
+  // Refresh session states once per minute so LÄUFT/FERTIG stays correct
+  // while the tab is left open on the pit wall.
+  setInterval(() => {
+    schCard.body.replaceChildren();
+    renderSchedule(schCard.body, race, new Date());
+  }, 60000);
 
   // 7. News-Ticker (2 Spalten) — global + race-spezifisch gemergt
   const globalFeeds = (config.globalNewsFeeds || []);
@@ -102,7 +112,7 @@ function renderHero(race, series, track, status) {
   const start = new Date(race.startUtc);
   const end   = new Date(race.endUtc);
 
-  return el('section', { class: 'race-hero span-full' },
+  return el('section', { class: 'race-hero span-full', dataset: { series: race.seriesSlug || '' } },
     el('div', { class: 'card-corner' }),
     el('div', { class: 'meta-line' },
       el('span', { class: 'series-tag' }, series ? series.shortName : (race.seriesSlug || '').toUpperCase()),
@@ -115,11 +125,11 @@ function renderHero(race, series, track, status) {
     ),
     el('h1', {}, race.name),
     el('div', { class: 'sub-line' },
-      el('div', {}, '📍 ', el('b', {}, track ? track.name : race.trackSlug),
+      el('div', {}, icon('pin'), ' ', el('b', {}, track ? track.name : race.trackSlug),
         track && track.lengthKm ? ` · ${track.lengthKm} km` : ''),
-      el('div', {}, '🏁 START · ', el('b', {}, formatRaceDateTime(start))),
-      el('div', {}, '🏆 ZIEL · ', el('b', {}, formatRaceDateTime(end))),
-      race.timezone ? el('div', {}, '🕐 ', race.timezone) : null
+      el('div', {}, icon('flag'), ' START · ', el('b', {}, formatRaceDateTime(start))),
+      el('div', {}, icon('trophy'), ' ZIEL · ', el('b', {}, formatRaceDateTime(end))),
+      race.timezone ? el('div', {}, icon('clock'), ' ', race.timezone) : null
     )
   );
 }
@@ -161,6 +171,11 @@ function renderLiveTiming(container, race) {
 }
 
 // === Schedule ===
+// Schedule times in race JSONs are TRACK-LOCAL wall-clock times. We convert
+// them via race.timezone into absolute instants, then display them in the
+// user's browser timezone — consistent with the hero (startUtc).
+const DEFAULT_SESSION_MIN = { quali: 90, practice: 90, warmup: 45, scrutineering: 240 };
+
 function renderSchedule(container, race, now) {
   if (!race.schedule || !race.schedule.length) {
     container.append(el('div', { class: 'w-fallback' }, 'Zeitplan wird nachgepflegt.'));
@@ -168,42 +183,44 @@ function renderSchedule(container, race, now) {
   }
   const list = el('div', { class: 'sch-list' });
 
-  // Gruppieren nach Datum
-  const groups = new Map();
-  for (const item of race.schedule) {
-    if (!groups.has(item.date)) groups.set(item.date, []);
-    groups.get(item.date).push(item);
-  }
+  // Resolve every item to an absolute instant first, then group by LOCAL day
+  // (grouping by raw item.date would split days wrong across timezones).
+  const resolved = race.schedule
+    .map(item => ({ item, when: zonedTimeToDate(item.date, item.time, race.timezone) }))
+    .filter(r => r.when && !isNaN(r.when))
+    .sort((a, b) => a.when - b.when);
 
-  // Datum-Schlüssel sortieren
-  const sortedKeys = [...groups.keys()].sort();
-
-  for (const dateKey of sortedKeys) {
-    const headerDate = parseLocalDateTime(dateKey, '12:00');
-    list.append(el('div', { class: 'sch-day-header' }, formatDayHeader(headerDate)));
-    for (const item of groups.get(dateKey)) {
-      const when = parseLocalDateTime(item.date, item.time);
-      let stateClass = '';
-      let stateLabel = '';
-      if (item.type === 'race-start') {
-        stateClass = 'race-start';
-        stateLabel = 'START';
-      } else if (now > when) {
-        stateClass = 'done';
-        stateLabel = 'FERTIG';
-      } else if (now > new Date(when.getTime() - 30 * 60000) && now < new Date(when.getTime() + 2 * 60 * 60000)) {
-        stateClass = 'live';
-        stateLabel = 'LÄUFT';
-      } else {
-        stateLabel = isSameDay(now, when) ? 'HEUTE' : (item.type || '').toUpperCase();
-        if (!stateLabel || stateLabel === 'UPCOMING') stateLabel = 'BEVORST.';
-      }
-      list.append(el('div', { class: 'sch-item ' + stateClass },
-        el('span', { class: 'sch-time' }, item.time),
-        el('span', { class: 'sch-event' }, item.event),
-        el('span', { class: 'sch-status' }, stateLabel)
-      ));
+  let lastDayKey = null;
+  for (const { item, when } of resolved) {
+    const dayKey = `${when.getFullYear()}-${when.getMonth()}-${when.getDate()}`;
+    if (dayKey !== lastDayKey) {
+      lastDayKey = dayKey;
+      list.append(el('div', { class: 'sch-day-header' }, formatDayHeader(when)));
     }
+
+    const durMin = item.durationMin ?? DEFAULT_SESSION_MIN[item.type] ?? 120;
+    const sessionEnd = new Date(when.getTime() + durMin * 60000);
+    let stateClass = '';
+    let stateLabel = '';
+    if (item.type === 'race-start') {
+      stateClass = 'race-start';
+      stateLabel = 'START';
+    } else if (now >= when && now <= sessionEnd) {
+      // live BEFORE done — previous order marked running sessions as done
+      stateClass = 'live';
+      stateLabel = 'LÄUFT';
+    } else if (now > sessionEnd) {
+      stateClass = 'done';
+      stateLabel = 'FERTIG';
+    } else {
+      stateLabel = isSameDay(now, when) ? 'HEUTE' : (item.type || '').toUpperCase();
+      if (!stateLabel || stateLabel === 'UPCOMING') stateLabel = 'BEVORST.';
+    }
+    list.append(el('div', { class: 'sch-item ' + stateClass },
+      el('span', { class: 'sch-time' }, formatTime(when)),
+      el('span', { class: 'sch-event' }, item.event),
+      el('span', { class: 'sch-status' }, stateLabel)
+    ));
   }
   container.append(list);
 }

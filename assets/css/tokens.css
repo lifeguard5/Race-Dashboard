@@ -15,7 +15,7 @@
   /* --- Text --- */
   --ink:          #e8efe5;
   --ink-dim:      #8a9588;
-  --ink-faint:    #4a544a;
+  --ink-faint:    #66716a;   /* was #4a544a — ~2.4:1 on card bg, too low for 9-10px labels */
 
   /* --- Akzente --- */
   --green:        #84ff00;   /* Eifel green */
@@ -24,6 +24,12 @@
   --red:          #ff2a2a;   /* Red flag / Live */
   --blue:         #2196f3;
   --orange:       #ff7a00;
+
+  /* --- Serien-Akzente ---
+     Default accent = Eifel green. Cards/heroes carry data-series="…",
+     the overrides below re-tint series tags, corners, day numbers etc.
+     Colors chosen for AA contrast on --bg-card and clear mutual distinction. */
+  --accent:       var(--green);
 
   /* --- Typo --- */
   --font-display: 'Bebas Neue', sans-serif;
@@ -48,3 +54,13 @@
   /* --- Effekte --- */
   --grain-svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
 }
+
+/* === Serien-Akzentfarben (via data-series="…" auf Karte/Hero/Zeile) === */
+[data-series="wec"]              { --accent: #33b1ff; }  /* WEC · ice blue */
+[data-series="imsa"]             { --accent: #ff7a00; }  /* IMSA · orange */
+[data-series="gtwc-europe"]      { --accent: #8f9bff; }  /* GTWC · indigo */
+[data-series="dtm"]              { --accent: #d7dce0; }  /* DTM · silver */
+[data-series="elms"]             { --accent: #2dd4bf; }  /* ELMS · teal */
+[data-series="adac-gt-masters"]  { --accent: #ffd60a; }  /* GT Masters · ADAC yellow */
+[data-series="nls"],
+[data-series="24h-nuerburgring"] { --accent: #84ff00; }  /* Nordschleife · Eifel green */

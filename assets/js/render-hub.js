@@ -4,6 +4,7 @@
 import { loadCore } from './data-loader.js';
 import { getRaceStatus, getStatusLabel, pickFeaturedRace, compareForListing } from './race-status.js';
 import { formatRaceDateTime, formatRelative, indexBy, el } from './utils.js';
+import { icon } from './icons.js';
 import { showError } from './app.js';
 
 const main = document.getElementById('hub-main');
@@ -14,13 +15,24 @@ const main = document.getElementById('hub-main');
     const seriesMap = indexBy(series, 'slug');
     const tracksMap = indexBy(tracks, 'slug');
 
-    const now = new Date();
-    const featured = pickFeaturedRace(races, now);
-    const others = races.filter(r => r !== featured).sort((a, b) => compareForListing(a, b, now));
+    let lastStatusKey = null;
+    function renderAll() {
+      const now = new Date();
+      // Cheap dirty-check: only re-render when a race status flipped,
+      // so a long-running pit-wall tab switches to LIVE automatically.
+      const statusKey = races.map(r => getRaceStatus(r, now)).join('|');
+      if (statusKey === lastStatusKey) return;
+      lastStatusKey = statusKey;
 
-    main.replaceChildren();
-    if (featured) main.append(renderFeatured(featured, seriesMap, tracksMap, now));
-    others.forEach(r => main.append(renderCard(r, seriesMap, tracksMap, now)));
+      const featured = pickFeaturedRace(races, now);
+      const others = races.filter(r => r !== featured).sort((a, b) => compareForListing(a, b, now));
+
+      main.replaceChildren();
+      if (featured) main.append(renderFeatured(featured, seriesMap, tracksMap, now));
+      others.forEach(r => main.append(renderCard(r, seriesMap, tracksMap, now)));
+    }
+    renderAll();
+    setInterval(renderAll, 60000);
 
     if (!races.length) {
       main.append(el('div', { class: 'stub-box' },
@@ -41,7 +53,7 @@ function renderFeatured(race, seriesMap, tracksMap, now) {
   const status = getRaceStatus(race, now);
   const start  = new Date(race.startUtc);
 
-  return el('a', { class: 'featured-race', href: `race.html?id=${encodeURIComponent(race.slug)}` },
+  return el('a', { class: 'featured-race', href: `race.html?id=${encodeURIComponent(race.slug)}`, dataset: { series: race.seriesSlug || '' } },
     el('div', { class: 'featured-label' },
       el('span', { class: 'status-badge ' + status },
         status === 'live' ? el('span', { class: 'dot' }) : null,
@@ -52,9 +64,9 @@ function renderFeatured(race, seriesMap, tracksMap, now) {
     ),
     el('h2', {}, race.name),
     el('div', { class: 'meta' },
-      el('div', {}, '📍 ', el('b', {}, track ? track.name : race.trackSlug)),
-      el('div', {}, '🏁 ', el('b', {}, formatRaceDateTime(start))),
-      el('div', {}, '⏱ ', el('b', {}, formatRelative(start, now)))
+      el('div', {}, icon('pin'), ' ', el('b', {}, track ? track.name : race.trackSlug)),
+      el('div', {}, icon('flag'), ' ', el('b', {}, formatRaceDateTime(start))),
+      el('div', {}, icon('timer'), ' ', el('b', {}, formatRelative(start, now)))
     ),
     el('span', { class: 'featured-cta' }, 'ÖFFNEN →')
   );
@@ -66,7 +78,7 @@ function renderCard(race, seriesMap, tracksMap, now) {
   const status = getRaceStatus(race, now);
   const start  = new Date(race.startUtc);
 
-  return el('a', { class: 'race-card', href: `race.html?id=${encodeURIComponent(race.slug)}` },
+  return el('a', { class: 'race-card', href: `race.html?id=${encodeURIComponent(race.slug)}`, dataset: { series: race.seriesSlug || '' } },
     el('div', { class: 'card-corner' }),
     el('div', { class: 'race-card-top' },
       el('span', { class: 'race-card-series' }, series ? series.shortName : race.seriesSlug),

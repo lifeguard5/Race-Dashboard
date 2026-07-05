@@ -20,6 +20,9 @@ async function fetchJson(path) {
     if (!res.ok) throw new Error(`HTTP ${res.status} beim Laden von ${path}`);
     return res.json();
   })();
+  // Evict rejected promises: otherwise a single transient network error
+  // poisons this path for every later caller until a full page reload.
+  p.catch(() => _cache.delete(path));
   _cache.set(path, p);
   return p;
 }

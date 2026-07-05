@@ -11,7 +11,7 @@
 .card-corner {
   position: absolute; top: 0; right: 0;
   width: 28px; height: 28px;
-  background: linear-gradient(135deg, transparent 50%, var(--green) 50%);
+  background: linear-gradient(135deg, transparent 50%, var(--accent, var(--green)) 50%);
   opacity: 0.7;
   pointer-events: none;
 }
@@ -57,7 +57,7 @@
   animation: blink 1.2s infinite;
 }
 .status-badge.finished { color: var(--ink-faint); }
-@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.2; } }
+@keyframes blink { 0%, 45% { opacity: 1; } 70% { opacity: 0.25; } 100% { opacity: 1; } }
 
 .live-pill {
   display: flex; align-items: center; gap: 8px;
@@ -99,7 +99,7 @@
   margin-bottom: var(--space-3);
 }
 .race-hero .meta-line .series-tag {
-  background: var(--green);
+  background: var(--accent, var(--green));
   color: #000;
   padding: 2px 10px;
   font-weight: 700;
@@ -121,7 +121,7 @@
   padding-top: var(--space-4);
   margin-top: var(--space-4);
 }
-.race-hero .sub-line b { color: var(--green); font-weight: 500; }
+.race-hero .sub-line b { color: var(--accent, var(--green)); font-weight: 500; }
 
 /* === COUNTDOWN === */
 .countdown {
@@ -448,7 +448,7 @@
   font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.3em;
-  color: var(--green);
+  color: var(--accent, var(--green));
   margin-bottom: 8px;
   display: flex; align-items: center; gap: 8px;
 }
@@ -466,7 +466,7 @@
   letter-spacing: 0.1em;
   margin-bottom: var(--space-4);
 }
-.featured-race .meta b { color: var(--green); font-weight: 500; }
+.featured-race .meta b { color: var(--accent, var(--green)); font-weight: 500; }
 .featured-cta {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-display);
@@ -493,8 +493,8 @@
   min-height: 200px;
 }
 .race-card:hover {
-  border-color: var(--green);
-  background: linear-gradient(135deg, var(--bg-card), rgba(132,255,0,0.05));
+  border-color: var(--accent, var(--green));
+  background: linear-gradient(135deg, var(--bg-card), rgba(255,255,255,0.03));
   transform: translateY(-2px);
   color: var(--ink);
 }
@@ -511,7 +511,7 @@
   font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.25em;
-  color: var(--green);
+  color: var(--accent, var(--green));
 }
 .race-card-name {
   font-family: var(--font-display);
@@ -746,8 +746,8 @@ main.grid-race .span-2of3 { grid-column: span 2; }
   min-height: 320px;
 }
 .series-card:hover {
-  border-color: var(--green);
-  background: linear-gradient(135deg, var(--bg-card), rgba(132,255,0,0.05));
+  border-color: var(--accent, var(--green));
+  background: linear-gradient(135deg, var(--bg-card), rgba(255,255,255,0.03));
   transform: translateY(-2px);
   color: var(--ink);
 }
@@ -758,7 +758,7 @@ main.grid-race .span-2of3 { grid-column: span 2; }
   font-family: var(--font-display);
   font-size: 13px;
   letter-spacing: 0.3em;
-  color: var(--green);
+  color: var(--accent, var(--green));
 }
 .series-card-name {
   font-family: var(--font-display);
@@ -961,7 +961,7 @@ main.grid-race .span-2of3 { grid-column: span 2; }
   color: var(--ink);
   letter-spacing: -0.02em;
 }
-.cal-row.upcoming .cal-day-num { color: var(--green); }
+.cal-row.upcoming .cal-day-num { color: var(--accent, var(--green)); }
 .cal-row.live     .cal-day-num { color: var(--red); }
 .cal-day-wd {
   font-size: 9px;
@@ -992,7 +992,7 @@ main.grid-race .span-2of3 { grid-column: span 2; }
   font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.2em;
-  color: var(--green);
+  color: var(--accent, var(--green));
 }
 .cal-name {
   font-family: var(--font-display);
@@ -1095,3 +1095,23 @@ main.grid-race .span-2of3 { grid-column: span 2; }
   line-height: 1.5;
 }
 .error-box strong { color: var(--red); display: block; margin-bottom: 4px; letter-spacing: 0.15em; }
+
+/* === Ergänzungen: Design-Pass 2026-07 === */
+
+/* Zeitplan auf schmalen Screens: engeres Raster statt 80px-Spalte */
+@media (max-width: 720px) {
+  .sch-item { grid-template-columns: 52px 1fr auto; gap: 8px; }
+  .sch-time { font-size: 10px; }
+}
+
+/* Trocken-Hinweis in der Wetter-Card neutral statt blau */
+.w-rain.dry {
+  background: linear-gradient(90deg, rgba(132,255,0,0.08), transparent);
+  border-left-color: var(--green-dim);
+}
+
+/* Countdown: bei 3-stelligen Tageswerten nicht umbrechen */
+.cd-value { white-space: nowrap; }
+
+/* Serien-Akzent auch für den Featured-Streifenhintergrund dezent nutzbar */
+.featured-race[data-series], .race-hero[data-series] { border-top: 2px solid var(--accent, var(--green)); }

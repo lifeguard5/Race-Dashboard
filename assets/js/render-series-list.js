@@ -36,6 +36,7 @@ function render(series, races) {
     grid.append(el('a', {
       class: 'series-card',
       href: 'serie.html?id=' + encodeURIComponent(s.slug),
+      dataset: { series: s.slug || '' },
     },
       el('div', { class: 'card-corner' }),
       el('div', { class: 'series-card-shortname' }, s.shortName || s.slug.toUpperCase()),

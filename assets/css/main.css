@@ -44,6 +44,9 @@ img { max-width: 100%; height: auto; }
 
 /* === HEADER === */
 .site-header {
+  position: sticky;           /* pit-wall clock always in view */
+  top: 0;
+  z-index: 100;
   border-bottom: 1px solid var(--line);
   padding: var(--space-4) var(--space-6);
   display: grid;
@@ -193,3 +196,20 @@ main.grid-hub {
 .yellow { color: var(--yellow); }
 .red { color: var(--red); }
 .tabular { font-variant-numeric: tabular-nums; }
+
+/* === MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === INLINE ICONS (icons.js) === */
+.mi-wrap { display: inline-flex; vertical-align: -2px; }
+.mi { width: 13px; height: 13px; display: block; }
+.w-day-icon .mi { width: 18px; height: 18px; margin: 0 auto; }
+.w-cond strong .mi { width: 14px; height: 14px; vertical-align: -2px; color: var(--yellow); }
+.w-rain .mi { width: 12px; height: 12px; vertical-align: -2px; color: var(--blue); }
+.w-rain.dry .mi { color: var(--green-dim); }
