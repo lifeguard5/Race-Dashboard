@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "wec",
+    "name": "FIA World Endurance Championship",
+    "shortName": "WEC",
+    "category": "endurance",
+    "classes": [
+      "Hypercar",
+      "LMGT3"
+    ],
+    "officialUrl": "https://www.fiawec.com",
+    "youtubeUrl": "https://www.youtube.com/channel/UCKMI8JeOaowpEPLuOZGBJ_w",
+    "description": "Langstrecken-WM mit Le Mans als Krone der Saison.",
+    "canonicalClasses": [
+      "HYPERCAR",
+      "GT3"
+    ]
+  },
+  {
+    "slug": "nls",
+    "name": "Nürburgring Langstrecken-Serie",
+    "shortName": "NLS",
+    "category": "endurance",
+    "classes": [
+      "SP9",
+      "SP-X",
+      "Cup2",
+      "Cup3",
+      "TCR",
+      "VLN-Klassen"
+    ],
+    "officialUrl": "https://www.vln.de",
+    "youtubeUrl": null,
+    "description": "Klassische Langstreckenserie auf der Nordschleife mit 4- bis 6-Stunden-Rennen.",
+    "canonicalClasses": [
+      "GT3",
+      "GT4"
+    ]
+  },
+  {
+    "slug": "gtwc-europe",
+    "name": "GT World Challenge Europe",
+    "shortName": "GTWC EU",
+    "category": "gt-sprint-endurance",
+    "classes": [
+      "Pro",
+      "Pro-Am",
+      "Silver",
+      "Bronze"
+    ],
+    "officialUrl": "https://www.gt-world-challenge-europe.com",
+    "youtubeUrl": "https://www.youtube.com/@SRO",
+    "description": "SRO-Meisterschaft mit Sprint-Cup und Endurance-Cup, Höhepunkt 24h Spa.",
+    "canonicalClasses": [
+      "GT3"
+    ]
+  },
+  {
+    "slug": "dtm",
+    "name": "Deutsche Tourenwagen Masters",
+    "shortName": "DTM",
+    "category": "gt-sprint",
+    "classes": [
+      "GT3"
+    ],
+    "officialUrl": "https://www.dtm.com",
+    "youtubeUrl": "https://www.youtube.com/@DTM",
+    "description": "Deutsche GT3-Sprint-Meisterschaft.",
+    "canonicalClasses": [
+      "GT3"
+    ]
+  },
+  {
+    "slug": "adac-gt-masters",
+    "name": "ADAC GT Masters",
+    "shortName": "GT MASTERS",
+    "category": "gt-sprint",
+    "classes": [
+      "GT3"
+    ],
+    "officialUrl": "https://www.adac.de/motorsport/adac-gt-masters/",
+    "youtubeUrl": "https://www.youtube.com/@ADACMotorsports",
+    "description": "ADAC GT3-Sprintserie mit Pro-Am-Wertung.",
+    "canonicalClasses": [
+      "GT3"
+    ]
+  },
+  {
+    "slug": "elms",
+    "name": "European Le Mans Series",
+    "shortName": "ELMS",
+    "category": "endurance",
+    "classes": [
+      "LMP2",
+      "LMP3",
+      "LMGT3"
+    ],
+    "officialUrl": "https://www.europeanlemansseries.com",
+    "youtubeUrl": null,
+    "description": "4-Stunden-Langstrecken in Europa, Sprungbrett Richtung Le Mans.",
+    "canonicalClasses": [
+      "LMP2",
+      "LMP3",
+      "GT3"
+    ]
+  },
+  {
+    "slug": "imsa",
+    "name": "IMSA WeatherTech SportsCar Championship",
+    "shortName": "IMSA",
+    "category": "endurance",
+    "classes": [
+      "GTP",
+      "LMP2",
+      "GTD Pro",
+      "GTD"
+    ],
+    "officialUrl": "https://www.imsa.com",
+    "youtubeUrl": "https://www.youtube.com/@IMSA",
+    "description": "Nordamerikanische Langstrecken-Meisterschaft, Krone: Rolex 24 Daytona und Sebring 12h.",
+    "canonicalClasses": [
+      "GTP",
+      "LMP2",
+      "GT3"
+    ]
+  },
+  {
+    "slug": "24h-nuerburgring",
+    "name": "24h Nürburgring",
+    "shortName": "24H NBR",
+    "category": "endurance-event",
+    "classes": [
+      "SP9 Pro",
+      "SP9 Pro-Am",
+      "SP-X",
+      "Cup-Klassen",
+      "TCR",
+      "Tourenwagen"
+    ],
+    "officialUrl": "https://www.24h-rennen.de",
+    "youtubeUrl": "https://www.youtube.com/channel/UCpAERTtaB02g_4PqsT0kf3w",
+    "description": "Eintägiges Langstreckenrennen auf Nordschleife + GP-Strecke, ADAC RAVENOL als Titelsponsor.",
+    "canonicalClasses": [
+      "GT3",
+      "GT4"
+    ]
+  },
+  {
+    "slug": "intercontinental-gt",
+    "name": "Intercontinental GT Challenge",
+    "shortName": "IGTC",
+    "category": "endurance",
+    "classes": [
+      "GT3"
+    ],
+    "officialUrl": "https://www.intercontinentalgtchallenge.com",
+    "youtubeUrl": "https://www.youtube.com/@SRO",
+    "description": "Globale GT3-Langstreckenserie der SRO mit den großen 24h-Events der Welt.",
+    "canonicalClasses": [
+      "GT3"
+    ]
+  }
+]

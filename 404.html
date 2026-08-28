@@ -1,57 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0c0a">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>404 · RACE PIT WALL</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="/src/styles/main.css" />
 </head>
 <body>
-
-<header class="site-header">
-  <a class="brand" href="index.html">
-    <div class="logo-mark"><span>RPW</span></div>
-    <div class="brand-text">
-      <h1>RACE PIT WALL</h1>
-      <div class="sub">ENDURANCE &amp; GT DASHBOARD</div>
-    </div>
-  </a>
-  <nav class="site-nav" aria-label="Hauptnavigation">
-    <a href="index.html">Hub</a>
-    <a href="rennen.html">Rennen</a>
-    <a href="serien.html">Serien</a>
-    <a href="kalender.html">Kalender</a>
-    <a href="about.html">Info</a>
-  </nav>
-  <div class="header-strip">
-    <div class="strip-item"><span class="strip-label">UHR</span><span class="strip-value tabular" id="hdr-clock">—</span></div>
-  </div>
-</header>
-
-<main>
-  <div class="stub-box">
-    <div class="tag">RED FLAG · 404</div>
-    <h2>Seite nicht gefunden</h2>
-    <p>Diese URL existiert nicht (mehr). Vielleicht ein Tippfehler im Race-Slug? Auf dem Hub findest du alle aktuellen Rennen.</p>
-    <a href="index.html">→ Zurück zum Hub</a>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div><span class="green">●</span> RACE PIT WALL · Inoffizielles Fan-Dashboard</div>
-  <div class="disclaimer">
-    Keine Verbindung zu ACO, FIA, ADAC, SRO, Nürburgring oder anderen Veranstaltern.
-    Live-Timing-Daten werden über offizielle Embeds eingebunden, sofern erlaubt. Markenrechte gehören den jeweiligen Inhabern.
-  </div>
-</footer>
-
-<script type="module" src="assets/js/app.js"></script>
-
+  <rpw-header></rpw-header>
+  <main>
+    <h1>BOX BOX — Seite nicht gefunden.</h1>
+    <p class="muted"><a href="/Race-Dashboard/">Zurück zur Pit Wall →</a></p>
+  </main>
+  <rpw-footer></rpw-footer>
+  <script type="module" src="/src/components/chrome.js"></script>
 </body>
 </html>

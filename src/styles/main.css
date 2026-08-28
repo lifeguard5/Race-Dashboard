@@ -1,0 +1,112 @@
+/* === RACE PIT WALL · main.css (Vite-Rewrite, Milestone 2) ===
+   Aggregator: erzwingt Cascade-Reihenfolge tokens → base → components. */
+@import './tokens.css';
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display, system-ui, sans-serif);
+}
+main { max-width: var(--max-w, 1100px); margin: 0 auto; padding: 16px; }
+a { color: inherit; text-decoration: none; }
+.muted { color: var(--ink-dim, #9aa); }
+.error { color: var(--red, #ff3b30); font-family: var(--font-mono, monospace); }
+
+/* ---------- Header / Footer ---------- */
+.site-header {
+  display: flex; align-items: center; gap: 20px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line, #223);
+}
+.brand { font-family: var(--font-hero, var(--font-display)); font-size: 1.3rem; letter-spacing: .06em; }
+.brand-accent { color: var(--green, #84ff00); }
+.site-nav { display: flex; gap: 14px; flex-wrap: wrap; }
+.site-nav a { font-size: .85rem; letter-spacing: .1em; color: var(--ink-dim); }
+.site-nav a.active, .site-nav a:hover { color: var(--green, #84ff00); }
+.hdr-clock { margin-left: auto; font-family: var(--font-mono, monospace); color: var(--ink-dim); }
+.site-footer { border-top: 1px solid var(--line, #223); padding: 20px 16px; font-size: .8rem; color: var(--ink-dim); }
+
+/* ---------- MILESTONE 2 · Live-Bar ---------- */
+rpw-live-bar { display: block; position: sticky; top: 0; z-index: 50; }
+rpw-live-bar[hidden] { display: none; }
+.live-bar {
+  background: color-mix(in srgb, var(--red, #ff3b30) 12%, var(--bg, #0a0c0a));
+  border-bottom: 1px solid var(--red, #ff3b30);
+  backdrop-filter: blur(6px);
+}
+.live-row {
+  position: relative;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 16px 12px;
+  font-size: .9rem;
+}
+.live-row + .live-row { border-top: 1px solid color-mix(in srgb, var(--red) 30%, transparent); }
+.live-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--red, #ff3b30);
+  animation: rpw-pulse 1.2s ease-in-out infinite;
+}
+@keyframes rpw-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 60%, transparent); }
+  50%      { box-shadow: 0 0 0 7px transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+.live-label { color: var(--red, #ff3b30); font-weight: 700; letter-spacing: .15em; }
+.live-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.live-tags { color: var(--ink-dim); font-size: .75rem; }
+.live-remain { margin-left: auto; font-family: var(--font-mono, monospace); color: var(--yellow, #ffd60a); }
+.live-progress {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: color-mix(in srgb, var(--line, #223) 60%, transparent);
+}
+.live-progress-fill { height: 100%; width: 0%; background: var(--green, #84ff00); transition: width .5s linear; }
+
+/* ---------- MILESTONE 2 · Klassen-Chips ---------- */
+.class-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.chip {
+  background: var(--bg-card, #12150f);
+  color: var(--ink-dim);
+  border: 1px solid var(--line, #223);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-mono, monospace);
+  font-size: .8rem;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--green, #84ff00); color: var(--ink); }
+.chip-active {
+  background: var(--green, #84ff00);
+  border-color: var(--green, #84ff00);
+  color: #0a0c0a;
+  font-weight: 700;
+}
+
+/* ---------- Race-Grid & Cards ---------- */
+.race-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.race-card {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-card, #12150f);
+  border: 1px solid var(--line, #223);
+  border-left: 3px solid var(--accent, var(--green, #84ff00));
+  padding: 14px;
+}
+.race-card:hover { border-color: var(--line-bright, #465); }
+.race-card.status-live { border-left-color: var(--red, #ff3b30); }
+.race-card-top { display: flex; justify-content: space-between; align-items: baseline; }
+.race-series { font-family: var(--font-mono, monospace); font-size: .75rem; color: var(--ink-dim); letter-spacing: .1em; }
+.status-badge { font-size: .68rem; letter-spacing: .12em; padding: 2px 8px; border-radius: 3px; }
+.status-badge-live { background: var(--red, #ff3b30); color: #fff; animation: rpw-pulse 1.2s ease-in-out infinite; }
+.status-badge-upcoming { background: var(--bg-card-2, #1a1e16); color: var(--ink-dim); border: 1px solid var(--line); }
+.status-badge-finished { background: var(--bg-card-2, #1a1e16); color: var(--ink-faint, #667); }
+.race-name { margin: 0; font-size: 1.05rem; line-height: 1.25; }
+.race-meta { display: flex; flex-direction: column; gap: 2px; font-size: .82rem; color: var(--ink-dim); font-family: var(--font-mono, monospace); }
+.race-classes { display: flex; gap: 6px; flex-wrap: wrap; }
+.class-pill {
+  font-size: .68rem; font-family: var(--font-mono, monospace);
+  border: 1px solid var(--line, #223); border-radius: 3px;
+  padding: 1px 6px; color: var(--ink-dim);
+}
+.race-tbc { font-size: .72rem; }
